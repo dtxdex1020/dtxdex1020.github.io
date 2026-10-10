@@ -195,10 +195,10 @@ h1 .dot { color: var(--sky); }
 .tab { font: 500 12px/1 var(--mono); color: var(--muted); padding: 8px 12px; border-radius: 7px; white-space: nowrap; }
 .tab.on { background: var(--ice-2); color: var(--navy); box-shadow: inset 0 -2px 0 var(--sky); }
 .editor-body { display: flex; font: 400 13.5px/1.7 var(--mono); padding: 16px 0; background: linear-gradient(90deg, var(--ice) 46px, var(--white) 46px); }
-.gutter { width: 46px; flex: none; text-align: right; padding-right: 12px; color: #a9c3da; user-select: none; height: calc(var(--lines, 16) * 1.7em); }
+.gutter { width: 46px; flex: none; text-align: right; padding-right: 12px; color: #a9c3da; user-select: none; height: calc(var(--lines, 16) * var(--lh, 1.7) * 1em); }
 .gutter span { display: block; }
 .gutter span.on { color: var(--navy); }
-.editor pre { flex: 1; padding: 0 18px; overflow-x: auto; height: calc(var(--lines, 16) * 1.7em); scrollbar-width: thin; }
+.editor pre { font: inherit; flex: 1; min-width: 0; padding: 0 18px; overflow-x: auto; height: calc(var(--lines, 16) * var(--lh, 1.7) * 1em); scrollbar-width: thin; }
 .caret { display: inline-block; width: 2px; height: 1.15em; margin-left: 1px; vertical-align: -.2em; background: var(--sky); animation: caret 1s steps(1) infinite; }
 @keyframes caret { 50% { opacity: 0; } }
 .status { display: flex; justify-content: space-between; gap: 12px; padding: 9px 16px; font: 500 11.5px/1 var(--mono); color: var(--white); background: var(--navy); border-radius: 0 0 16px 16px; }
@@ -417,9 +417,10 @@ body.source-open main, body.source-open .foot { outline: 2px dashed rgba(74,163,
   .hero { padding: 36px 0 72px; gap: 52px; }
   h1 { margin: 18px 0 16px; }
   .editor, .editor.reveal.in { transform: none; }
-  .editor-body { font-size: 11.5px; background: linear-gradient(90deg, var(--ice) 34px, var(--white) 34px); }
-  .gutter { width: 34px; padding-right: 8px; }
-  .editor pre { padding: 0 12px; }
+  /* phones: smaller, tighter editor so every line fits and there's no tall blank box */
+  .editor-body { --lh: 1.6; font-size: 11px; line-height: var(--lh); padding: 12px 0; background: linear-gradient(90deg, var(--ice) 32px, var(--white) 32px); }
+  .gutter { width: 32px; padding-right: 8px; }
+  .editor pre { padding: 0 10px 0 12px; }
   .status { font-size: 10.5px; }
   .note { font-size: 12px; }
   .band { padding: 80px 0; }
@@ -515,5 +516,6 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
   .term-line label .u, .term-line label .u + .c { display: none; }
   .term-out { font-size: 11.5px; }
 }
-@media (max-width: 360px) { .clock { display: none; } }
+@media (max-width: 420px) { .editor-body { font-size: 10.5px; } }
+@media (max-width: 360px) { .clock { display: none; } .editor-body { font-size: 9.8px; } }
 .role, h2, .sub { text-wrap: balance; } .intro, .proj p { text-wrap: pretty; }

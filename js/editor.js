@@ -5,7 +5,7 @@ const FILES = [
   {
     name: 'score-lead.ts',
     dir: '~/minthost/lib',
-    code: `type Lead = { message: string; visits: number };
+    code: `type Lead = { text: string; visits: number };
 
 // words that usually mean "ready to buy"
 const signals = [
@@ -16,8 +16,8 @@ const signals = [
 
 export function scoreLead(lead: Lead) {
   let score = Math.min(lead.visits * 4, 20);
-  for (const [pattern, weight] of signals) {
-    if (pattern.test(lead.message)) score += weight;
+  for (const [re, weight] of signals) {
+    if (re.test(lead.text)) score += weight;
   }
   return Math.min(score, 99);
 }`,
@@ -25,20 +25,21 @@ export function scoreLead(lead: Lead) {
   {
     name: 'slowmode.ts',
     dir: '~/zeltra/commands',
-    code: `import { command, opt } from "../lib/command";
+    code: `import { command, opt } from "../lib/cmd";
 
 export default command({
   name: "slowmode",
   description: "Cool a channel down",
   perms: ["ManageChannels"],
   options: {
-    seconds: opt.int({ min: 0, max: 21600 }),
+    seconds: opt.int({ max: 21600 }),
     reason: opt.string().optional(),
   },
   async run({ channel, args, cases }) {
-    await channel.setRateLimitPerUser(args.seconds);
-    await cases.log("slowmode", { channel, ...args });
-    return \`slowmode: \${args.seconds}s\`;
+    const s = args.seconds;
+    await channel.setRateLimitPerUser(s);
+    await cases.log("slowmode", args);
+    return \`slowmode: \${s}s\`;
   },
 });`,
   },
@@ -78,7 +79,10 @@ export function initEditor({ reducedMotion }) {
     posEl.textContent = `Ln ${lines.length}, Col ${lines[lines.length - 1].length + 1}`;
   };
 
-  async function play(index) {
+  // Phones type faster so the box never sits half-empty for long.
+  const narrow = window.matchMedia('(max-width: 760px)');
+
+  async function play(index, prefill = 0) {
     const id = ++run;
     current = index;
     const file = FILES[index];
@@ -88,7 +92,11 @@ export function initEditor({ reducedMotion }) {
     if (reducedMotion) { render(file.code, true); return; }
 
     const src = file.code;
+    // Start partway in (first load only) so the editor is never an empty box.
     let i = 0;
+    for (let n = 0; n < prefill; n++) i = src.indexOf('\n', i) + 1;
+    if (i) render(src.slice(0, i));
+    const pace = narrow.matches ? 0.55 : 1;
     while (i < src.length) {
       if (id !== run) return;
       // auto-indent: jump over leading whitespace like a real editor would
@@ -96,16 +104,21 @@ export function initEditor({ reducedMotion }) {
       i++;
       render(src.slice(0, i));
       const ch = src[i - 1];
-      await sleep(ch === '\n' ? 140 : /[,;{(]/.test(ch) ? 70 : 16 + Math.random() * 34);
+      await sleep(pace * (ch === '\n' ? 140 : /[,;{(]/.test(ch) ? 70 : 16 + Math.random() * 34));
     }
     render(src, false);
     await sleep(4200);
     if (id === run) play((index + 1) % FILES.length);
   }
 
-  // Start typing only once the editor is on screen.
+  // Paint the first few lines right away, then start typing once it's on screen.
+  const PREFILL = 4;
+  const first = FILES[0].code.split('\n').slice(0, PREFILL).join('\n') + '\n';
+  tabs[0].classList.add('on');
+  tabs[0].setAttribute('aria-selected', true);
+  if (!reducedMotion) render(first);
   const io = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) { io.disconnect(); play(0); }
-  });
+    if (e.isIntersecting) { io.disconnect(); play(0, PREFILL); }
+  }, { rootMargin: '0px 0px 120px 0px' });
   io.observe(codeEl);
 }
