@@ -2,132 +2,299 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dex - Founder &amp; Developer</title>
-  <meta name="description" content="Dex, founder of MintHost and MintBreeze. I build AI-powered tools for small businesses, plus Discord bots." />
-  <meta name="theme-color" content="#0b0f0e" />
-  <meta property="og:title" content="Dex - Founder & Developer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Dex · MintHost &amp; MintBreeze</title>
+  <meta name="description" content="Dex, founder of MintHost and MintBreeze. AI-powered tools for small businesses, plus Discord bots." />
+  <meta name="theme-color" content="#f5faff" />
+  <meta property="og:title" content="Dex · MintHost & MintBreeze" />
   <meta property="og:description" content="Founder of MintHost and MintBreeze. AI-powered tools for small businesses, plus Discord bots." />
   <meta property="og:url" content="https://dtxdex1020.github.io" />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <link rel="icon" type="image/svg+xml" href="assets/mark.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bg-glow" aria-hidden="true"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="mark" viewBox="0 0 64 64" fill="none">
+      <path d="M8 40 L24 20 L31 29 L38 21 L56 40" stroke="#4aa3df" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M19 26.5 L24 20 L28 25" stroke="#1f4e79" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M8 49 C 16 43, 24 43, 32 48 S 48 53, 56 46" stroke="#1f4e79" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="glow" id="glow" aria-hidden="true"></div>
 
   <header class="nav" id="nav">
-    <a href="#top" class="logo"><span class="dot"></span>Dex</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-    <nav class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact" class="btn btn-small">Contact</a>
+    <a href="#top" class="brand" aria-label="Dex, back to top"><svg><use href="#mark"/></svg><span>dex</span></a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#terminal">terminal</a>
+      <a href="#work">work</a>
+      <a href="#stack">stack</a>
+      <a href="#contact">contact</a>
     </nav>
+    <div class="nav-tools">
+      <span class="clock" title="Dex's local time (Eastern)"><i></i><time id="clock">--:--</time><b>ET</b></span>
+      <button class="chip" id="sourceToggle" aria-pressed="false" title="View source">&lt;/&gt;<span class="hide-sm"> source</span></button>
+      <button class="chip chip-solid" id="paletteOpen" title="Command palette" aria-label="Open command palette"><span class="keys"><kbd class="mod">⌘</kbd><kbd>K</kbd></span><span class="jump">jump</span></button>
+    </div>
   </header>
 
   <main id="top">
+    <!-- ───────────── hero ───────────── -->
     <section class="hero">
-      <p class="eyebrow reveal">Hey, I'm Dex 👋</p>
-      <h1 class="reveal">Dex - <span class="accent">Founder</span> &amp; Developer</h1>
-      <p class="lead reveal">Founder of <a href="https://minthost.org" target="_blank" rel="noopener">MintHost</a> and <a href="https://mintbreeze.org" target="_blank" rel="noopener">MintBreeze</a>. I build AI-powered tools that answer calls, book clients, and help small businesses grow, plus Discord bots.</p>
-      <div class="hero-cta reveal">
-        <a href="#projects" class="btn">See my work</a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
-      </div>
-      <div class="hero-tags reveal">
-        <span>TypeScript</span><span>Next.js</span><span>Node.js</span><span>Prisma</span><span>PostgreSQL</span><span>Discord.js</span>
-      </div>
-      <a href="#about" class="scroll-hint" aria-label="Scroll down"><span></span></a>
-    </section>
-
-    <section id="about" class="section">
-      <h2 class="section-title reveal"><span class="num">01.</span> About</h2>
-      <div class="about-grid">
-        <div class="reveal">
-          <p>Small businesses lose customers every day to missed calls, slow replies, and websites that don't convert. I build software that fixes that.</p>
-          <p>As the founder of MintHost and MintBreeze, I ship products end to end: product design, full-stack code, databases, infrastructure, and customer support. My go-to stack is TypeScript, Next.js, Prisma, and PostgreSQL.</p>
-          <p>Outside the business side, I build Discord bots that keep communities safe and organized, with privacy built in from day one.</p>
+      <div class="hero-copy">
+        <p class="eyebrow reveal"><svg><use href="#mark"/></svg> founder · minthost &amp; mintbreeze</p>
+        <h1 class="reveal">Dex<span class="dot">.</span></h1>
+        <p class="role reveal">I build software that picks up the phone, <span class="scribble">books the client<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 40 2, 80 11, 120 6 S 180 3, 198 7"/></svg></span>, and keeps the Discord civil.</p>
+        <p class="intro reveal">Founder of <a href="https://minthost.org" target="_blank" rel="noopener">MintHost</a> and <a href="https://mintbreeze.org" target="_blank" rel="noopener">MintBreeze</a>. I make AI-powered tools for small businesses, plus Discord bots, and I ship them end to end: product, TypeScript, database, infrastructure, support inbox.</p>
+        <div class="cta reveal">
+          <a href="#work" class="btn">See the work</a>
+          <a href="#terminal" class="btn btn-line">Open the terminal <span aria-hidden="true">→</span></a>
         </div>
-        <ul class="highlights reveal">
-          <li><strong>Founder</strong><span>MintHost &amp; MintBreeze</span></li>
-          <li><strong>Focus</strong><span>AI-powered tools for small businesses</span></li>
-          <li><strong>Builds</strong><span>Full-stack web apps &amp; Discord bots</span></li>
-        </ul>
+        <p class="now reveal"><span>now</span>keeping MintHost, MintBreeze and Zeltra running. Also, this site.</p>
+      </div>
+
+      <figure class="editor reveal" id="editor" aria-label="Code editor typing TypeScript">
+        <div class="win-bar">
+          <span class="lights"><i></i><i></i><i></i></span>
+          <div class="tabs" role="tablist" id="editorTabs"></div>
+        </div>
+        <div class="editor-body">
+          <div class="gutter" id="editorGutter" aria-hidden="true"></div>
+          <pre><code id="editorCode"></code></pre>
+        </div>
+        <figcaption class="status">
+          <span id="editorFile">~/minthost/lib</span>
+          <span><span id="editorPos">Ln 1, Col 1</span> · TypeScript</span>
+        </figcaption>
+        <span class="note" aria-hidden="true">↖ typed live. every single visit.</span>
+      </figure>
+    </section>
+
+    <!-- ───────────── terminal ───────────── -->
+    <section class="band" id="terminal">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="path">~/terminal</p>
+          <h2>Poke around.</h2>
+          <p class="sub">A real little shell. Try <code>help</code>, <code>neofetch</code>, or <code>sudo hire dex</code>. <kbd>Tab</kbd> completes, <kbd>↑</kbd><kbd>↓</kbd> walk history.</p>
+        </header>
+        <div class="term reveal" id="term">
+          <div class="win-bar">
+            <span class="lights"><i></i><i></i><i></i></span>
+            <span class="win-title">dex@mintbreeze: ~</span>
+          </div>
+          <div class="term-out" id="termOut" aria-live="polite"></div>
+          <form class="term-line" id="termForm" autocomplete="off">
+            <label for="termIn"><span class="u">dex@mintbreeze</span><span class="c">:</span><span class="p">~</span><span class="c">$</span></label>
+            <input id="termIn" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="go" aria-label="Terminal input" />
+          </form>
+        </div>
+        <p class="scrawl scrawl-term" aria-hidden="true">go on, type something ↑</p>
+        <div class="quick reveal" id="termQuick" aria-label="Quick commands">
+          <button>help</button><button>whoami</button><button>projects</button><button>neofetch</button><button>ls -la</button><button>sudo hire dex</button>
+        </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
-      <h2 class="section-title reveal"><span class="num">02.</span> Projects</h2>
-      <div class="cards">
-        <article class="card reveal">
-          <div class="card-top"><span class="card-icon">🚀</span><span class="badge live">Live</span></div>
+    <!-- ───────────── work ───────────── -->
+    <section class="wrap" id="work">
+      <header class="sec-head reveal">
+        <p class="path">~/work</p>
+        <h2>Three things I run.</h2>
+        <p class="sub">Two businesses and a bot. The code below is illustrative, written for this page; product source stays private.</p>
+      </header>
+
+      <!-- MintHost -->
+      <article class="proj proj-host reveal">
+        <div class="proj-copy">
+          <span class="idx">01</span>
           <h3>MintHost</h3>
-          <p>AI-powered lead generation that turns website visitors into booked customers: a smart chat widget, lead scoring, and appointment booking, plus website building and hosting.</p>
-          <ul class="stack"><li>Next.js</li><li>TypeScript</li><li>Prisma</li><li>PostgreSQL</li></ul>
-          <a class="card-link" href="https://minthost.org" target="_blank" rel="noopener">minthost.org <span>→</span></a>
-        </article>
-        <article class="card reveal">
-          <div class="card-top"><span class="card-icon">📞</span><span class="badge live">Live</span></div>
-          <h3>MintBreeze</h3>
-          <p>An AI-powered receptionist and assistant for small businesses. It answers calls, replies to emails, follows up, books appointments, and sends daily reports.</p>
-          <ul class="stack"><li>Next.js</li><li>TypeScript</li><li>Prisma</li><li>PostgreSQL</li></ul>
-          <a class="card-link" href="https://mintbreeze.org" target="_blank" rel="noopener">mintbreeze.org <span>→</span></a>
-        </article>
-        <article class="card reveal">
-          <div class="card-top"><span class="card-icon">🤖</span><span class="badge">Private source</span></div>
+          <p class="tag">Lead generation and booking</p>
+          <p>A chat widget that turns website visitors into booked customers. It scores every conversation, nudges the hot ones toward a calendar slot, and MintHost builds and hosts the site it lives on.</p>
+          <ul class="stack-list"><li>Next.js</li><li>TypeScript</li><li>Prisma</li><li>PostgreSQL</li></ul>
+          <a class="link" href="https://minthost.org" target="_blank" rel="noopener">minthost.org <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="api" id="leadDemo">
+          <div class="api-req">
+            <span class="verb">POST</span><span class="url">/v1/leads/score</span>
+            <span class="live-pill">runs in your browser</span>
+          </div>
+          <label class="api-label" for="leadMsg">message</label>
+          <textarea id="leadMsg" rows="2" spellcheck="false">Hi! Can I get a price on a cleaning? Ideally today if you have a slot.</textarea>
+          <div class="api-row">
+            <label class="api-label" for="leadVisits">visits <output id="leadVisitsOut">3</output></label>
+            <input type="range" id="leadVisits" min="0" max="8" value="3" />
+          </div>
+          <div class="api-res">
+            <div class="api-res-head"><span class="ok" id="leadStatus">200 OK</span><span class="ms" id="leadMs">12 ms</span></div>
+            <pre><code id="leadOut"></code></pre>
+          </div>
+          <div class="meter" aria-hidden="true"><i id="leadMeter"></i></div>
+        </div>
+      </article>
+
+      <!-- MintBreeze -->
+      <article class="proj proj-breeze reveal">
+        <div class="breeze-head">
+          <div>
+            <span class="idx">02</span>
+            <h3>MintBreeze</h3>
+            <p class="tag">Receptionist and assistant</p>
+          </div>
+          <div>
+            <p>It answers the phone, replies to email, follows up with people who went quiet, books appointments, and sends the owner a morning report of what actually needs them.</p>
+            <a class="link" href="https://mintbreeze.org" target="_blank" rel="noopener">mintbreeze.org <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="breeze-grid">
+          <div class="code-card">
+            <div class="code-card-head">handlers/call-ended.ts</div>
+            <pre><code data-lang="ts" class="hl">on("call.ended", async (call) =&gt; {
+  const intent = await classify(call.transcript);
+
+  if (intent.kind === "book") {
+    const slot = await calendar.firstOpen(intent.window);
+    await sms.send(call.from, confirm(slot));
+  }
+
+  await owner.digest.add(summarize(call));
+});</code></pre>
+          </div>
+          <div class="stream" id="stream" aria-label="Example event stream">
+            <div class="stream-head"><span><i class="pulse"></i>events · demo line</span><button class="mini" id="streamReplay">replay</button></div>
+            <ol id="streamList"></ol>
+          </div>
+        </div>
+      </article>
+
+      <!-- Zeltra -->
+      <article class="proj proj-zeltra reveal">
+        <div class="z-chat" aria-label="Example Discord exchange">
+          <div class="z-msg">
+            <span class="z-av">m</span>
+            <div><b>mod_kai</b><span class="z-time">Today at 9:41 PM</span>
+              <p><span class="z-cmd">/slowmode</span> <span class="z-opt">seconds:</span>30 <span class="z-opt">reason:</span>cool it down</p></div>
+          </div>
+          <div class="z-msg">
+            <span class="z-av z-bot"><svg><use href="#mark"/></svg></span>
+            <div><b>Zeltra</b><span class="z-badge">BOT</span><span class="z-time">Today at 9:41 PM</span>
+              <div class="z-embed">
+                <strong>Slowmode on #general</strong>
+                <p>30 seconds between messages. Logged to the mod case history.</p>
+                <span class="z-foot">reason: cool it down</span>
+              </div></div>
+          </div>
+        </div>
+        <div class="proj-copy">
+          <span class="idx">03</span>
           <h3>Zeltra</h3>
-          <p>An all-in-one Discord bot for moderation, auto-mod, server settings, and tags, with a self-serve portal where members can export or delete their data.</p>
-          <ul class="stack"><li>Discord.js</li><li>TypeScript</li><li>Prisma</li><li>Node.js</li></ul>
-          <span class="card-link muted">Discord bot</span>
-        </article>
+          <p class="tag">Discord bot · private source</p>
+          <div class="z-count"><span class="big" id="zCount">28</span><span>slash commands</span></div>
+          <div class="z-cells-wrap"><div class="z-cells" id="zCells" aria-hidden="true"></div><span class="scrawl" aria-hidden="true">one square per command</span></div>
+          <p>Moderation with case history, auto-mod, server settings, tags, and a self-serve data portal where members can export or delete their own data.</p>
+          <pre class="z-portal"><code data-lang="ts" class="hl">await portal.request(member.id, "export");
+// → { status: "queued", deliver: "dm" }</code></pre>
+        </div>
+      </article>
+    </section>
+
+    <!-- ───────────── stack ───────────── -->
+    <section class="band" id="stack">
+      <div class="wrap stack-grid">
+        <header class="sec-head reveal">
+          <p class="path">~/stack</p>
+          <h2>The toolbox, as an object.</h2>
+          <p class="sub">Hover a value. It's TypeScript all the way down, with a few boring choices on purpose.</p>
+          <ul class="rules">
+            <li><span>01</span>Boring tech for the parts that must not break.</li>
+            <li><span>02</span>Ship the small version, then listen.</li>
+            <li><span>03</span>Privacy is a feature, not a footer link.</li>
+          </ul>
+        </header>
+        <div class="code-card big reveal">
+          <div class="code-card-head">dex.config.ts<span class="hide-sm">· satisfies Builder</span></div>
+          <pre><code data-lang="ts" class="hl" id="stackCode">const dex = {
+  role: "founder",
+  ships: ["MintHost", "MintBreeze", "Zeltra"],
+
+  languages: ["TypeScript", "JavaScript", "SQL", "HTML", "CSS"],
+  frameworks: ["Next.js", "React", "Tailwind CSS"],
+  runtime: "Node.js",
+  data: { orm: "Prisma", db: "PostgreSQL" },
+  bots: ["discord.js"],
+  ops: ["Railway", "Docker", "Git"],
+
+  focus: "AI-powered tools for small businesses",
+  inbox: "support.minthost@gmail.com",
+} as const satisfies Builder;
+
+export default dex;</code></pre>
+        </div>
       </div>
     </section>
 
-    <section id="skills" class="section">
-      <h2 class="section-title reveal"><span class="num">03.</span> Skills</h2>
-      <div class="skills">
-        <div class="skill-group reveal">
-          <h3>Languages</h3>
-          <ul><li>TypeScript</li><li>JavaScript</li><li>HTML &amp; CSS</li><li>SQL</li></ul>
-        </div>
-        <div class="skill-group reveal">
-          <h3>Frontend</h3>
-          <ul><li>Next.js</li><li>React</li><li>Tailwind CSS</li><li>Responsive UI</li></ul>
-        </div>
-        <div class="skill-group reveal">
-          <h3>Backend &amp; Data</h3>
-          <ul><li>Node.js</li><li>Prisma</li><li>PostgreSQL</li><li>REST APIs &amp; OAuth</li></ul>
-        </div>
-        <div class="skill-group reveal">
-          <h3>Bots &amp; Ops</h3>
-          <ul><li>Discord.js</li><li>Railway</li><li>Docker</li><li>Git &amp; GitHub</li></ul>
-        </div>
+    <!-- ───────────── contact ───────────── -->
+    <section class="wrap contact" id="contact">
+      <p class="path reveal">~/contact</p>
+      <h2 class="reveal">Missing calls?<br /><span>Losing leads?</span></h2>
+      <p class="sub reveal">If you run a small business, or you want to talk about a build, my inbox is open.</p>
+      <div class="mail reveal">
+        <a class="btn btn-big" href="mailto:support.minthost@gmail.com">support.minthost@gmail.com</a>
+        <button class="btn btn-line" id="copyMail" data-mail="support.minthost@gmail.com">Copy</button>
       </div>
+      <ul class="elsewhere reveal">
+        <li><a href="https://minthost.org" target="_blank" rel="noopener"><span>web</span>minthost.org ↗</a></li>
+        <li><a href="https://mintbreeze.org" target="_blank" rel="noopener"><span>web</span>mintbreeze.org ↗</a></li>
+        <li><a href="https://github.com/dtxdex1020" target="_blank" rel="noopener"><span>code</span>github.com/dtxdex1020 ↗</a></li>
+      </ul>
     </section>
 
-    <section id="contact" class="section contact">
-      <h2 class="section-title reveal center"><span class="num">04.</span> Contact</h2>
-      <p class="lead reveal">Running a small business that's missing calls or leads, or want to talk about a project? My inbox is open.</p>
-      <div class="hero-cta reveal">
-        <a class="btn" href="mailto:support.minthost@gmail.com">support.minthost@gmail.com</a>
+    <!-- ───────────── changelog ───────────── -->
+    <section class="wrap log" id="changelog">
+      <div class="log-side reveal">
+        <p class="path">~/changelog.md</p>
+        <p class="scrawl">yes, a portfolio with a changelog.</p>
       </div>
-      <div class="contact-links reveal">
-        <a href="https://minthost.org" target="_blank" rel="noopener">minthost.org</a>
-        <a href="https://mintbreeze.org" target="_blank" rel="noopener">mintbreeze.org</a>
-        <a href="https://github.com/dtxdex1020" target="_blank" rel="noopener">GitHub</a>
-      </div>
+      <ol class="log-list reveal">
+        <li><time datetime="2026-10-09">Oct 9, 2026</time><b>v2</b><p>Torn down and rebuilt by hand. Light mode, MintBreeze blues, a terminal that actually works, ⌘K, and a view-source button because why not.</p></li>
+        <li><time>before that</time><b>v1</b><p>Dark theme, mint green, three identical cards. Looked like every other portfolio. Retired.</p></li>
+      </ol>
     </section>
   </main>
 
-  <footer class="footer">
-    <p>© <span id="year"></span> Dex · Founder of MintHost &amp; MintBreeze</p>
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <a href="#top" class="brand"><svg><use href="#mark"/></svg><span>dex</span></a>
+      <p>Hand-coded in HTML, CSS and vanilla JS. No framework, no build step. Press <kbd class="mod">⌘</kbd><kbd>K</kbd> anywhere.</p>
+      <p>© <span id="year"></span> Dex</p>
+    </div>
   </footer>
 
-  <script src="main.js"></script>
+  <!-- command palette -->
+  <div class="palette" id="palette" hidden>
+    <div class="palette-box" role="dialog" aria-modal="true" aria-label="Command palette">
+      <input id="paletteIn" type="text" placeholder="Jump to… (try “term”, “copy”, “source”)" spellcheck="false" autocomplete="off" />
+      <ul id="paletteList" role="listbox"></ul>
+      <div class="palette-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> go</span><span><kbd>esc</kbd> close</span></div>
+    </div>
+  </div>
+
+  <!-- view source drawer -->
+  <aside class="source" id="source" aria-label="Page source" hidden>
+    <div class="source-head">
+      <div class="source-tabs" id="sourceTabs"></div>
+      <button class="mini" id="sourceClose" aria-label="Close source">close ✕</button>
+    </div>
+    <pre class="source-body"><code id="sourceCode">loading…</code></pre>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
