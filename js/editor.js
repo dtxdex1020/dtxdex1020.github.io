@@ -24,7 +24,7 @@ export function scoreLead(lead: Lead) {
   },
   {
     name: 'slowmode.ts',
-    dir: '~/zeltra/commands',
+    dir: '~/bots/commands',
     code: `import { command, opt } from "../lib/cmd";
 
 export default command({

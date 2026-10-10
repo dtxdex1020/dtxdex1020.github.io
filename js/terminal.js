@@ -13,12 +13,12 @@ const uptime = () => {
 
 const FILES = {
   'about.md': `Dex. Founder of MintHost and MintBreeze.
-I build AI-powered tools for small businesses, and I write Discord bots from scratch.
+I build AI-powered tools for small businesses, and I run Discord & ER:LC bots.
 Product, code, database, infra, support inbox: all of it.`,
   'projects.json': `{
   "minthost":   "https://minthost.org",
   "mintbreeze": "https://mintbreeze.org",
-  "zeltra":     "discord bot, written from scratch, private source",
+  "zeltra":     "discord + er:lc bot, built on open-source ducky v1, github.com/dtxdex1020/Zeltra",
   "oss":        "https://github.com/dtxdex1020?tab=repositories"
 }`,
   '.secrets': 'nice try.',
@@ -61,14 +61,14 @@ ${Object.entries(COMMANDS)
   whoami: {
     desc: 'who is this',
     run: () => `<b>dex</b>, founder of ${link('https://minthost.org', 'MintHost')} and ${link('https://mintbreeze.org', 'MintBreeze')}.
-Builds AI-powered tools for small businesses, and writes Discord bots from scratch.
+Builds AI-powered tools for small businesses, and runs Discord &amp; ER:LC bots.
 Writes TypeScript. Answers his own support inbox.`,
   },
   projects: {
     desc: 'what I run',
     run: () => `<b>01  MintHost</b>     lead generation + booking      ${link('https://minthost.org')}
 <b>02  MintBreeze</b>   receptionist + assistant       ${link('https://mintbreeze.org')}
-<b>03  Zeltra</b>       discord bot, from scratch, 28 slash commands  <span class="t-dim">(private source)</span>
+<b>03  Zeltra</b>       discord + er:lc bot on ducky v1, 73 slash commands  <span class="t-dim">(open source, AGPL-3.0)</span>
 <span class="t-dim">plus ${OSS.length} open-source tools. type</span> <b>oss</b>`,
   },
   oss: {
@@ -83,7 +83,7 @@ ${OSS.map(([name, desc, demo]) => `<b>${name}</b>
     run: () => `<span class="t-kw">languages</span>   TypeScript, JavaScript, SQL, HTML, CSS
 <span class="t-kw">frameworks</span>  Next.js, React, Tailwind CSS
 <span class="t-kw">backend</span>     Node.js, Prisma, PostgreSQL
-<span class="t-kw">bots</span>        discord.js, written from scratch in TypeScript
+<span class="t-kw">bots</span>        Zeltra on open-source Ducky V1 (Lua); discord.js templates
 <span class="t-kw">ops</span>         Railway, Docker, Git`,
   },
   contact: {
@@ -132,7 +132,7 @@ drwxr-xr-x  dex  staff   ..
         `<b>role</b>     founder`,
         `<b>ships</b>    MintHost, MintBreeze, Zeltra`,
         `<b>lang</b>     TypeScript`,
-        `<b>bots</b>     discord.js, from scratch`,
+        `<b>bots</b>     Discordia (Ducky V1), discord.js`,
         `<b>shell</b>    dexsh (handmade)`,
         `<b>time</b>     ${nowET()} ET`,
         `<b>uptime</b>   ${uptime()} on this page`,

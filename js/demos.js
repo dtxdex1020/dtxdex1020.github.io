@@ -82,11 +82,11 @@ export function initStream({ reducedMotion }) {
   io.observe(list.parentElement);
 }
 
-/* ── Zeltra: 28 cells, one per slash command ── */
+/* ── Zeltra: 73 cells, one per slash command ── */
 export function initZeltra({ reducedMotion }) {
   const cells = document.getElementById('zCells');
   if (!cells) return;
-  cells.innerHTML = Array.from({ length: 28 }, (_, i) => `<i style="--i:${i}"></i>`).join('');
+  cells.innerHTML = Array.from({ length: 73 }, (_, i) => `<i style="--i:${i}"></i>`).join('');
   if (reducedMotion) { cells.classList.add('lit'); return; }
   const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); cells.classList.add('lit'); } }, { threshold: 0.5 });
   io.observe(cells);
@@ -98,7 +98,8 @@ const NOTES = {
   '"Next.js"': 'MintHost + MintBreeze',
   '"Prisma"': 'schema first, always',
   '"PostgreSQL"': 'boring, on purpose',
-  '"discord.js"': 'powers Zeltra',
+  '"Discordia"': 'powers Zeltra (Ducky V1)',
+  '"discord.js"': 'starter templates',
   '"Railway"': 'where things run',
   '"founder"': 'and support inbox',
 };
