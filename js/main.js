@@ -43,6 +43,7 @@ const palette = initPalette([
   { group: 'go', label: 'Top', hint: '↑', run: () => go('top') },
   { group: 'go', label: 'Terminal', hint: '~/terminal', keywords: 'shell cli', run: () => { go('terminal'); setTimeout(() => terminal?.focus(), reducedMotion ? 0 : 600); } },
   { group: 'go', label: 'Work', hint: '~/work', keywords: 'projects', run: () => go('work') },
+  { group: 'go', label: 'Open source', hint: '~/open-source', keywords: 'oss github repos', run: () => go('oss') },
   { group: 'go', label: 'Stack', hint: '~/stack', keywords: 'skills', run: () => go('stack') },
   { group: 'go', label: 'Contact', hint: '~/contact', keywords: 'email', run: () => go('contact') },
   { group: 'go', label: 'Changelog', hint: '~/changelog.md', keywords: 'log history', run: () => go('changelog') },

@@ -18,13 +18,23 @@ Product, code, database, infra, support inbox: all of it.`,
   'projects.json': `{
   "minthost":   "https://minthost.org",
   "mintbreeze": "https://mintbreeze.org",
-  "zeltra":     "discord bot, written from scratch, private source"
+  "zeltra":     "discord bot, written from scratch, private source",
+  "oss":        "https://github.com/dtxdex1020?tab=repositories"
 }`,
   '.secrets': 'nice try.',
   'todo.txt': `- answer every support email
 - ship the small version
 - touch grass (pending)`,
 };
+
+const OSS = [
+  ['discord-bot-starter', 'discord.js v14 slash-command template'],
+  ['shrt', 'self-hosted URL shortener, Hono + SQLite'],
+  ['lead-score', 'hot / warm / cold lead scoring, 0 deps'],
+  ['slotfinder', 'open booking slots, time zones, DST-safe', 'https://dtxdex1020.github.io/slotfinder/'],
+  ['hookbin', 'catch, inspect, replay webhooks locally'],
+  ['upcheck', 'uptime + TLS checks, CLI + GitHub Action'],
+];
 
 const NEOFETCH_ART = [
   '         /\\                ',
@@ -58,7 +68,15 @@ Writes TypeScript. Answers his own support inbox.`,
     desc: 'what I run',
     run: () => `<b>01  MintHost</b>     lead generation + booking      ${link('https://minthost.org')}
 <b>02  MintBreeze</b>   receptionist + assistant       ${link('https://mintbreeze.org')}
-<b>03  Zeltra</b>       discord bot, from scratch, 28 slash commands  <span class="t-dim">(private source)</span>`,
+<b>03  Zeltra</b>       discord bot, from scratch, 28 slash commands  <span class="t-dim">(private source)</span>
+<span class="t-dim">plus ${OSS.length} open-source tools. type</span> <b>oss</b>`,
+  },
+  oss: {
+    desc: 'open-source projects',
+    run: () => `<span class="t-dim">open source · MIT · github.com/dtxdex1020</span>
+${OSS.map(([name, desc, demo]) => `<b>${name}</b>
+  <span class="t-dim">${desc}</span>
+  ${link(`https://github.com/dtxdex1020/${name}`, `repo ↗`)}${demo ? `  ${link(demo, 'live demo ↗')}` : ''}`).join('\n')}`,
   },
   skills: {
     desc: 'the stack',
@@ -177,8 +195,8 @@ export function initTerminal({ onNavigate }) {
       const jump = ['work', 'stack', 'contact'].find((s) => s === name.toLowerCase().replace(/^cd\s*/, ''));
       if (name === 'cd' && args[0]) {
         const target = args[0].replace(/^~\//, '');
-        if (['work', 'stack', 'contact', 'terminal'].includes(target)) { onNavigate?.(target); print(`→ ~/${esc(target)}`); return; }
-        print(`cd: ${esc(args[0])}: try work, stack or contact`); return;
+        if (['work', 'oss', 'stack', 'contact', 'terminal'].includes(target)) { onNavigate?.(target); print(`→ ~/${esc(target)}`); return; }
+        print(`cd: ${esc(args[0])}: try work, oss, stack or contact`); return;
       }
       if (jump) { onNavigate?.(jump); return; }
       print(`<span class="t-err">command not found:</span> ${esc(name)}. type <b>help</b>.`);
@@ -198,7 +216,7 @@ export function initTerminal({ onNavigate }) {
     } else {
       const c = COMMANDS[parts[0]];
       const rest = parts.slice(1).join(' ');
-      const options = parts[0] === 'cd' ? ['work', 'stack', 'contact'] : c?.args || [];
+      const options = parts[0] === 'cd' ? ['work', 'oss', 'stack', 'contact'] : c?.args || [];
       pool = options.filter((a) => a.startsWith(rest));
       if (pool.length === 1) { input.value = `${parts[0]} ${pool[0]}`; return; }
     }

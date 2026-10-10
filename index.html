@@ -33,6 +33,7 @@
     <nav class="nav-links" aria-label="Sections">
       <a href="#terminal">terminal</a>
       <a href="#work">work</a>
+      <a href="#oss">oss</a>
       <a href="#stack">stack</a>
       <a href="#contact">contact</a>
     </nav>
@@ -96,7 +97,7 @@
         </div>
         <p class="scrawl scrawl-term" aria-hidden="true">go on, type something ↑</p>
         <div class="quick reveal" id="termQuick" aria-label="Quick commands">
-          <button>help</button><button>whoami</button><button>projects</button><button>neofetch</button><button>ls -la</button><button>sudo hire dex</button>
+          <button>help</button><button>whoami</button><button>projects</button><button>oss</button><button>neofetch</button><button>ls -la</button><button>sudo hire dex</button>
         </div>
       </div>
     </section>
@@ -203,6 +204,90 @@
       </article>
     </section>
 
+    <!-- ───────────── open source ───────────── -->
+    <section class="wrap oss" id="oss">
+      <header class="sec-head reveal">
+        <p class="path">~/open-source</p>
+        <h2>Small tools, out in the open.</h2>
+        <p class="sub">Six weekend-sized projects, MIT licensed and tested. Clone them, fork them, take what helps.</p>
+      </header>
+      <ul class="oss-grid">
+        <li class="oss-card reveal" style="--d:0ms">
+          <div class="code-card-head">dtxdex1020/discord-bot-starter</div>
+          <div class="oss-body">
+            <h3><a href="https://github.com/dtxdex1020/discord-bot-starter" target="_blank" rel="noopener">discord-bot-starter</a></h3>
+            <p class="tag">Discord bot template</p>
+            <p>A clean discord.js v14 slash-command starter: auto-loaded commands and events, zod-checked config, cooldowns, real error replies.</p>
+            <ul class="stack-list"><li>TypeScript</li><li>discord.js</li><li>zod</li><li>template</li></ul>
+          </div>
+          <div class="oss-links">
+            <a class="oss-link" href="https://github.com/dtxdex1020/discord-bot-starter" target="_blank" rel="noopener">repo <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="oss-card reveal" style="--d:80ms">
+          <div class="code-card-head">dtxdex1020/shrt</div>
+          <div class="oss-body">
+            <h3><a href="https://github.com/dtxdex1020/shrt" target="_blank" rel="noopener">shrt</a></h3>
+            <p class="tag">URL shortener</p>
+            <p>A tiny self-hosted shortener. Custom slugs, click counts, rate limiting, a minimal UI, one SQLite file, one container.</p>
+            <ul class="stack-list"><li>TypeScript</li><li>Hono</li><li>SQLite</li><li>Docker</li></ul>
+          </div>
+          <div class="oss-links">
+            <a class="oss-link" href="https://github.com/dtxdex1020/shrt" target="_blank" rel="noopener">repo <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="oss-card reveal" style="--d:160ms">
+          <div class="code-card-head">dtxdex1020/lead-score</div>
+          <div class="oss-body">
+            <h3><a href="https://github.com/dtxdex1020/lead-score" target="_blank" rel="noopener">lead-score</a></h3>
+            <p class="tag">Lead scoring library</p>
+            <p>Tags inbound messages hot, warm or cold from budget, timeline, urgency and contact signals. Zero dependencies.</p>
+            <ul class="stack-list"><li>TypeScript</li><li>ESM + CJS</li><li>0 deps</li></ul>
+          </div>
+          <div class="oss-links">
+            <a class="oss-link" href="https://github.com/dtxdex1020/lead-score" target="_blank" rel="noopener">repo <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="oss-card reveal" style="--d:0ms">
+          <div class="code-card-head">dtxdex1020/slotfinder</div>
+          <div class="oss-body">
+            <h3><a href="https://github.com/dtxdex1020/slotfinder" target="_blank" rel="noopener">slotfinder</a></h3>
+            <p class="tag">Booking slot calculator</p>
+            <p>Open slots from business hours, time zones, buffers, bookings and blackout dates. DST-safe, zero dependencies.</p>
+            <ul class="stack-list"><li>TypeScript</li><li>Intl</li><li>0 deps</li></ul>
+          </div>
+          <div class="oss-links">
+            <a class="oss-link" href="https://github.com/dtxdex1020/slotfinder" target="_blank" rel="noopener">repo <span aria-hidden="true">↗</span></a>
+            <a class="oss-link" href="https://dtxdex1020.github.io/slotfinder/" target="_blank" rel="noopener">live demo <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="oss-card reveal" style="--d:80ms">
+          <div class="code-card-head">dtxdex1020/hookbin</div>
+          <div class="oss-body">
+            <h3><a href="https://github.com/dtxdex1020/hookbin" target="_blank" rel="noopener">hookbin</a></h3>
+            <p class="tag">Webhook inspector CLI</p>
+            <p>Catch webhooks locally, pretty-print them in the terminal, save them to JSON, and replay any of them at your handler.</p>
+            <ul class="stack-list"><li>TypeScript</li><li>CLI</li><li>Node http</li></ul>
+          </div>
+          <div class="oss-links">
+            <a class="oss-link" href="https://github.com/dtxdex1020/hookbin" target="_blank" rel="noopener">repo <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+        <li class="oss-card reveal" style="--d:160ms">
+          <div class="code-card-head">dtxdex1020/upcheck</div>
+          <div class="oss-body">
+            <h3><a href="https://github.com/dtxdex1020/upcheck" target="_blank" rel="noopener">upcheck</a></h3>
+            <p class="tag">Uptime check CLI + Action</p>
+            <p>Status, response time, TLS expiry and keyword checks for a list of URLs, with CI-friendly exit codes and a GitHub Action.</p>
+            <ul class="stack-list"><li>TypeScript</li><li>CLI</li><li>GitHub Action</li></ul>
+          </div>
+          <div class="oss-links">
+            <a class="oss-link" href="https://github.com/dtxdex1020/upcheck" target="_blank" rel="noopener">repo <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
     <!-- ───────────── stack ───────────── -->
     <section class="band" id="stack">
       <div class="wrap stack-grid">
@@ -261,6 +346,7 @@ export default dex;</code></pre>
         <p class="scrawl">yes, a portfolio with a changelog.</p>
       </div>
       <ol class="log-list reveal">
+        <li><time datetime="2026-10-09">Oct 9, 2026</time><b>v2.1</b><p>Added an open source section with six small tools, plus an <code>oss</code> command in the terminal.</p></li>
         <li><time datetime="2026-10-09">Oct 9, 2026</time><b>v2</b><p>Torn down and rebuilt by hand. Light mode, MintBreeze blues, a terminal that actually works, ⌘K, and a view-source button because why not.</p></li>
         <li><time>before that</time><b>v1</b><p>Dark theme, mint green, three identical cards. Looked like every other portfolio. Retired.</p></li>
       </ol>

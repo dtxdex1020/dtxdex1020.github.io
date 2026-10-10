@@ -519,3 +519,29 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
 @media (max-width: 420px) { .editor-body { font-size: 10.5px; } }
 @media (max-width: 360px) { .clock { display: none; } .editor-body { font-size: 9.8px; } }
 .role, h2, .sub { text-wrap: balance; } .intro, .proj p { text-wrap: pretty; }
+
+/* ── open source ──────────────────────────────────────────────────────── */
+.oss { padding: 40px 0 120px; }
+.oss-grid { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.oss-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; transition: border-color .2s, box-shadow .25s var(--ease), transform .25s var(--ease); }
+.oss-card.reveal.in:hover { border-color: var(--line-2); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.oss-card .code-card-head { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.oss-body { padding: 20px 20px 4px; flex: 1; }
+.oss-card h3 { font: 800 25px/1.1 var(--head); letter-spacing: -.03em; color: var(--navy); overflow-wrap: anywhere; }
+.oss-card h3 a { color: inherit; }
+.oss-card h3 a:hover { color: var(--sky-deep); }
+.oss-card .tag { margin: 6px 0 12px; }
+.oss-card p { font-size: 15px; color: var(--text); }
+.oss-card .stack-list { margin: 16px 0 14px; }
+.oss-links { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 14px 20px 18px; border-top: 1px dashed var(--line); }
+.oss-link { font: 600 13px/1 var(--mono); color: var(--navy); }
+.oss-link span { color: var(--sky); display: inline-block; transition: transform .2s var(--ease); }
+.oss-link:hover { color: var(--sky-deep); }
+.oss-link:hover span { transform: translate(2px, -2px); }
+@media (max-width: 1020px) { .oss-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .oss { padding: 24px 0 88px; }
+  .oss-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .oss-body { padding: 18px 18px 2px; }
+  .oss-links { padding: 12px 18px 16px; }
+}
