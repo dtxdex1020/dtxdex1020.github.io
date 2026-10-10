@@ -13,12 +13,12 @@ const uptime = () => {
 
 const FILES = {
   'about.md': `Dex. Founder of MintHost and MintBreeze.
-I build AI-powered tools for small businesses, plus Discord bots.
+I build AI-powered tools for small businesses, and I write Discord bots from scratch.
 Product, code, database, infra, support inbox: all of it.`,
   'projects.json': `{
   "minthost":   "https://minthost.org",
   "mintbreeze": "https://mintbreeze.org",
-  "zeltra":     "discord bot, private source"
+  "zeltra":     "discord bot, written from scratch, private source"
 }`,
   '.secrets': 'nice try.',
   'todo.txt': `- answer every support email
@@ -35,6 +35,7 @@ const NEOFETCH_ART = [
   '                           ',
   '   ~~~~~~~~~~~~~~~~~~~~~   ',
   '     ~~~~~~~~~~~~~~~~~     ',
+  '                           ',
 ];
 
 const COMMANDS = {
@@ -50,21 +51,21 @@ ${Object.entries(COMMANDS)
   whoami: {
     desc: 'who is this',
     run: () => `<b>dex</b>, founder of ${link('https://minthost.org', 'MintHost')} and ${link('https://mintbreeze.org', 'MintBreeze')}.
-Builds AI-powered tools for small businesses, plus Discord bots.
+Builds AI-powered tools for small businesses, and writes Discord bots from scratch.
 Writes TypeScript. Answers his own support inbox.`,
   },
   projects: {
     desc: 'what I run',
     run: () => `<b>01  MintHost</b>     lead generation + booking      ${link('https://minthost.org')}
 <b>02  MintBreeze</b>   receptionist + assistant       ${link('https://mintbreeze.org')}
-<b>03  Zeltra</b>       discord bot, 28 slash commands  <span class="t-dim">(private source)</span>`,
+<b>03  Zeltra</b>       discord bot, from scratch, 28 slash commands  <span class="t-dim">(private source)</span>`,
   },
   skills: {
     desc: 'the stack',
     run: () => `<span class="t-kw">languages</span>   TypeScript, JavaScript, SQL, HTML, CSS
 <span class="t-kw">frameworks</span>  Next.js, React, Tailwind CSS
 <span class="t-kw">backend</span>     Node.js, Prisma, PostgreSQL
-<span class="t-kw">bots</span>        discord.js
+<span class="t-kw">bots</span>        discord.js, written from scratch in TypeScript
 <span class="t-kw">ops</span>         Railway, Docker, Git`,
   },
   contact: {
@@ -113,6 +114,7 @@ drwxr-xr-x  dex  staff   ..
         `<b>role</b>     founder`,
         `<b>ships</b>    MintHost, MintBreeze, Zeltra`,
         `<b>lang</b>     TypeScript`,
+        `<b>bots</b>     discord.js, from scratch`,
         `<b>shell</b>    dexsh (handmade)`,
         `<b>time</b>     ${nowET()} ET`,
         `<b>uptime</b>   ${uptime()} on this page`,
