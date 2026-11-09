@@ -1,5 +1,16 @@
 * [Home](/)
 
+* **Member Handbook**
+  * [Introduction](member/introduction.md)
+  * [Server Rules](member/server-rules.md)
+  * [Verification](member/verification.md)
+  * [Ordering](member/ordering.md)
+  * [Payments](member/payments.md)
+  * [Marketplace](member/marketplace.md)
+  * [Reviews](member/reviews.md)
+  * [Applications](member/applications.md)
+  * [FAQ](member/faq.md)
+
 * **Designer Handbook**
   * [Introduction](designer/introduction.md)
   * [Guidelines](designer/guidelines.md)

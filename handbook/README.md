@@ -2,11 +2,15 @@
 
 # Dex's Commissions Handbook
 
-Internal guides for studio team members. If you found this by accident and you are not on the Dex's Commissions staff or creative team, please close this page.
+Guides for members, clients, and studio staff. Members and clients should start with the Member Handbook. The Designer and Support handbooks are for the team.
 
 Choose the handbook that matches your role:
 
 <div class="home-cards">
+  <a class="home-card" href="#/member/introduction">
+    <h3>Member Handbook</h3>
+    <p>Server rules, verification, orders, payments, the marketplace, reviews, and applications.</p>
+  </a>
   <a class="home-card" href="#/designer/introduction">
     <h3>Designer Handbook</h3>
     <p>Orders, quoting, payments, payouts, delivery, and creative workflow.</p>
