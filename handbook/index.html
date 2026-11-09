@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dex's Commissions Handbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Staff and designer handbooks for Dex's Commissions." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css" />
+  <style>
+    :root {
+      --base-background-color: #0b0b0d;
+      --base-color: #e8e8ea;
+      --theme-color: #f2f2f2;
+      --sidebar-background: #111114;
+      --sidebar-nav-link-color: #c8c8cc;
+      --sidebar-nav-link-color--hover: #ffffff;
+      --sidebar-nav-link-color--active: #ffffff;
+      --sidebar-border-color: #222228;
+      --heading-color: #ffffff;
+      --blockquote-background: #16161a;
+      --code-inline-background: #1c1c22;
+      --code-theme-background: #141418;
+      --table-row-odd-background: #121216;
+      --border-color: #2a2a32;
+      --link-color: #d0d0d6;
+      --link-color--hover: #ffffff;
+      --sidebar-width: 18rem;
+      --content-max-width: 52em;
+      --heading-h1-font-size: 1.85rem;
+      --heading-h2-font-size: 1.35rem;
+    }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    .sidebar { border-right: 1px solid var(--sidebar-border-color); }
+    .app-name { padding: 1rem 0.75rem 0.25rem; }
+    .app-name-link img {
+      max-width: 72px;
+      height: auto;
+      display: block;
+      margin: 0 auto 0.35rem;
+      border-radius: 10px;
+    }
+    .app-name-link { color: #fff !important; font-weight: 700; letter-spacing: 0.02em; text-align: center; display: block; }
+    .markdown-section > p:first-child img,
+    .markdown-section > p:first-of-type img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 0 0 1.25rem;
+      border: 1px solid #2a2a32;
+    }
+    .home-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .home-card {
+      display: block;
+      padding: 1.15rem 1.2rem;
+      border: 1px solid #2a2a32;
+      border-radius: 12px;
+      background: #141418;
+      color: #f0f0f2 !important;
+      text-decoration: none !important;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .home-card:hover { border-color: #6a6a76; transform: translateY(-1px); }
+    .home-card h3 { margin: 0 0 0.4rem; color: #fff; }
+    .home-card p { margin: 0; color: #b8b8bf; font-size: 0.95rem; }
+    .todo {
+      border-left: 3px solid #8a7a3a;
+      background: #1a1810;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+      color: #e6d9a8;
+    }
+    .warn {
+      border-left: 3px solid #8a4545;
+      background: #1a1010;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+      color: #e8b4b4;
+    }
+    .info {
+      border-left: 3px solid #3a5a8a;
+      background: #10141a;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+      color: #b8c8e0;
+    }
+    .sidebar-nav > ul > li > p { font-weight: 700; color: #fff; margin-top: 0.85rem; }
+    .markdown-section hr { border-color: #2a2a32; }
+    .search { margin: 0.75rem 0.9rem 0.25rem; }
+    .search input {
+      background: #0b0b0d !important;
+      border: 1px solid #2a2a32 !important;
+      color: #eee !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: "Dex's Commissions",
+      nameLink: '#/',
+      logo: 'assets/logo.gif',
+      basePath: '/handbook/',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      auto2top: true,
+      homepage: 'README.md',
+      search: {
+        placeholder: 'Search handbook',
+        noData: 'No results',
+        depth: 3,
+        paths: 'auto'
+      },
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+</body>
+</html>
