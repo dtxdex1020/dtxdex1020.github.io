@@ -1,10 +1,8 @@
 # Dexter
 
-Personal portfolio site for **Dexter** (`dtxdex1020`).
+Original black-and-white personal portfolio for **Dexter** (`dtxdex1020`).
 
-Black-and-white single-page portfolio: Home, About, Skills, Experience, Contact.
-
-**Stack shown:** Python, JavaScript, CSS, HTML  
+**Stack:** Python, JavaScript, CSS, HTML  
 **Location:** South Carolina  
 **Live:** [dtxdex1020.github.io](https://dtxdex1020.github.io) · [GitHub](https://github.com/dtxdex1020)
 

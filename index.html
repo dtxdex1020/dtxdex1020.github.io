@@ -3,234 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dexter | Portfolio</title>
-  <meta name="description" content="Portfolio of Dexter — Python, JavaScript, CSS, and HTML. Based in South Carolina." />
-  <meta name="theme-color" content="#000000" />
-  <meta property="og:title" content="Dexter | Portfolio" />
-  <meta property="og:description" content="Portfolio of Dexter — Python, JavaScript, CSS, and HTML. Based in South Carolina." />
+  <title>Dexter</title>
+  <meta name="description" content="Dexter — Python, JavaScript, CSS, HTML. South Carolina." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta property="og:title" content="Dexter" />
+  <meta property="og:description" content="Dexter — Python, JavaScript, CSS, HTML. South Carolina." />
   <meta property="og:url" content="https://dtxdex1020.github.io" />
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://dtxdex1020.github.io/" />
   <link rel="icon" type="image/svg+xml" href="assets/mark.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <a href="#home" class="logo" aria-label="Dexter, home">
-      <span class="brand-lockup">
-        <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
-          <rect width="64" height="64" rx="13" fill="#000" />
-          <path fill="#fff" fill-rule="evenodd" d="M18 12h18c11.2 0 18 7.4 18 20s-6.8 20-18 20H18V12zm10 8v24h8c6.2 0 10-4.6 10-12s-3.8-12-10-12h-8z" />
-        </svg>
-        <span class="brand-wordmark">dexter<span class="brand-dot" aria-hidden="true"></span></span>
-      </span>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="top">
+    <a class="mark" href="#top" aria-label="Dexter, top">
+      <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="10" fill="currentColor" />
+        <path fill="var(--paper)" fill-rule="evenodd" d="M18 12h18c11.2 0 18 7.4 18 20s-6.8 20-18 20H18V12zm10 8v24h8c6.2 0 10-4.6 10-12s-3.8-12-10-12h-8z" />
+      </svg>
     </a>
-    <nav id="site-nav" class="navbar" aria-label="Main">
-      <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <nav class="nav" aria-label="Sections">
+      <a href="#stack">Stack</a>
+      <a href="#note">Note</a>
+      <a href="#connect">Connect</a>
     </nav>
-    <a class="portal-link" href="https://github.com/dtxdex1020" target="_blank" rel="noopener" aria-label="GitHub profile">
-      <i class="fab fa-github" aria-hidden="true"></i>
-      <span>GitHub</span>
-    </a>
-    <button type="button" id="menu" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
-      <i class="fas fa-bars" aria-hidden="true"></i>
-    </button>
+    <a class="gh" href="https://github.com/dtxdex1020" target="_blank" rel="noopener">GitHub</a>
   </header>
 
-  <div class="portfolio-sections">
-    <section class="home" id="home">
-      <div id="particles-js" aria-hidden="true"></div>
-      <div class="content">
-        <h2>Hi There,<br />I'm <span class="hero-keep">Dexter</span></h2>
-        <p>I am a <span class="typing-text" aria-live="polite"></span></p>
-        <div class="hero-actions">
-          <a href="#about" class="btn"><span>About Me</span> <i class="fas fa-arrow-circle-down" aria-hidden="true"></i></a>
-        </div>
+  <main id="top">
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-field" aria-hidden="true">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+        <div class="rule"></div>
       </div>
-      <div class="image">
-        <div class="hero-visual tilt" aria-hidden="true">
-          <div class="code-card">
-            <div class="code-bar"><span></span><span></span><span></span></div>
-            <pre><code><span class="k">const</span> stack = [
-  <span class="s">"Python"</span>,
-  <span class="s">"JavaScript"</span>,
-  <span class="s">"CSS"</span>,
-  <span class="s">"HTML"</span>
-];
-
-<span class="k">export</span> <span class="k">default</span> stack;</code></pre>
-          </div>
+      <div class="hero-copy">
+        <p class="kicker">South Carolina</p>
+        <h1 class="brand">Dexter</h1>
+        <p class="lede">Python, JavaScript, CSS, and HTML.</p>
+        <div class="cta">
+          <a class="action" href="#stack">See the stack</a>
+          <a class="ghost" href="https://github.com/dtxdex1020" target="_blank" rel="noopener">Open GitHub</a>
         </div>
       </div>
     </section>
 
-    <section class="about" id="about">
-      <h2 class="heading"><i class="fas fa-user-alt" aria-hidden="true"></i> About <span>Me</span></h2>
-      <div class="row">
-        <div class="image">
-          <div class="about-visual tilt" aria-hidden="true">
-            <div class="mono-mark">D</div>
-            <p>dexter</p>
-          </div>
-        </div>
-        <div class="content">
-          <h3>I'm Dexter</h3>
-          <span class="tag">Python · JavaScript · CSS · HTML</span>
-          <p>
-            Hi, I'm Dexter. I build with Python, JavaScript, CSS, and HTML.
-            Based in South Carolina.
-          </p>
-          <div class="box-container">
-            <div class="box"><p><span>place:</span> South Carolina</p></div>
-            <div class="box"><p><span>email:</span> <a href="mailto:sharkmessi1020@gmail.com">sharkmessi1020@gmail.com</a></p></div>
-          </div>
-        </div>
-      </div>
+    <section class="stack" id="stack">
+      <header class="sec">
+        <p class="sec-label">Stack</p>
+        <h2>Four tools I use.</h2>
+      </header>
+      <ol class="stack-list">
+        <li><span class="n">01</span><span class="name">Python</span></li>
+        <li><span class="n">02</span><span class="name">JavaScript</span></li>
+        <li><span class="n">03</span><span class="name">CSS</span></li>
+        <li><span class="n">04</span><span class="name">HTML</span></li>
+      </ol>
     </section>
 
-    <section class="skills" id="skills">
-      <h2 class="heading"><i class="fas fa-laptop-code" aria-hidden="true"></i> Skills &amp; <span>Abilities</span></h2>
-      <div class="container">
-        <div class="row" id="skillsContainer">
-          <div class="bar">
-            <div class="info">
-              <i class="fab fa-python" aria-hidden="true"></i>
-              <span>Python</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <i class="fab fa-js" aria-hidden="true"></i>
-              <span>JavaScript</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <i class="fab fa-css3-alt" aria-hidden="true"></i>
-              <span>CSS</span>
-            </div>
-          </div>
-          <div class="bar">
-            <div class="info">
-              <i class="fab fa-html5" aria-hidden="true"></i>
-              <span>HTML</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="experience" id="experience">
-      <h2 class="heading"><i class="fas fa-briefcase" aria-hidden="true"></i> My <span>Experience</span></h2>
-      <div class="box-container">
-        <article class="box tilt">
-          <div class="xp-art" aria-hidden="true"><i class="fab fa-python"></i></div>
-          <div class="content">
-            <div class="tag"><h3>Python</h3></div>
-            <div class="desc">
-              <p>Scripting and application work in Python.</p>
-            </div>
-          </div>
-        </article>
-        <article class="box tilt">
-          <div class="xp-art" aria-hidden="true"><i class="fab fa-js"></i></div>
-          <div class="content">
-            <div class="tag"><h3>JavaScript</h3></div>
-            <div class="desc">
-              <p>Interactive front-end behavior in JavaScript.</p>
-            </div>
-          </div>
-        </article>
-        <article class="box tilt">
-          <div class="xp-art" aria-hidden="true"><i class="fab fa-css3-alt"></i></div>
-          <div class="content">
-            <div class="tag"><h3>CSS</h3></div>
-            <div class="desc">
-              <p>Layout, typography, and visual structure in CSS.</p>
-            </div>
-          </div>
-        </article>
-        <article class="box tilt">
-          <div class="xp-art" aria-hidden="true"><i class="fab fa-html5"></i></div>
-          <div class="content">
-            <div class="tag"><h3>HTML</h3></div>
-            <div class="desc">
-              <p>Semantic markup and page structure in HTML.</p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <h2 class="heading"><i class="fas fa-paper-plane" aria-hidden="true"></i> Contact <span>Me</span></h2>
-      <form id="contact-form" action="mailto:sharkmessi1020@gmail.com" method="get" enctype="text/plain">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required autocomplete="name" />
-        <label for="user_email">Your Email</label>
-        <input type="email" id="user_email" name="email" required autocomplete="email" />
-        <label for="title">Title</label>
-        <input type="text" id="title" name="subject" required />
-        <label for="message">Your Message</label>
-        <textarea id="message" name="body" required rows="5"></textarea>
-        <button type="submit" class="btn"><span>Send Message</span> <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
-      </form>
-      <p id="form-status" class="form-status" role="status"></p>
-      <p class="contact-alt">
-        Or reach me at
-        <a href="mailto:sharkmessi1020@gmail.com">sharkmessi1020@gmail.com</a>
-        ·
-        <a href="https://github.com/dtxdex1020" target="_blank" rel="noopener">github.com/dtxdex1020</a>
+    <section class="note" id="note">
+      <header class="sec">
+        <p class="sec-label">Note</p>
+        <h2>Short and plain.</h2>
+      </header>
+      <p class="note-body">
+        I’m Dexter. I write with Python, JavaScript, CSS, and HTML.
+        Based in South Carolina.
       </p>
     </section>
-  </div>
 
-  <section class="footer">
-    <div class="box-container">
-      <div class="box">
-        <h3 class="footer-brand" aria-label="Dexter">
-          <svg width="44" height="44" viewBox="0 0 64 64" aria-hidden="true">
-            <rect width="64" height="64" rx="13" fill="#fff" />
-            <path fill="#000" fill-rule="evenodd" d="M18 12h18c11.2 0 18 7.4 18 20s-6.8 20-18 20H18V12zm10 8v24h8c6.2 0 10-4.6 10-12s-3.8-12-10-12h-8z" />
-          </svg>
-          <span class="brand-wordmark">dexter<span class="brand-dot" aria-hidden="true"></span></span>
-        </h3>
-        <p>Thanks for visiting.</p>
-      </div>
-      <div class="box">
-        <h3>Quick Links</h3>
-        <a href="#home"><i class="fas fa-chevron-circle-right" aria-hidden="true"></i> Home</a>
-        <a href="#about"><i class="fas fa-chevron-circle-right" aria-hidden="true"></i> About</a>
-        <a href="#skills"><i class="fas fa-chevron-circle-right" aria-hidden="true"></i> Skills</a>
-        <a href="#experience"><i class="fas fa-chevron-circle-right" aria-hidden="true"></i> Experience</a>
-        <a href="#contact"><i class="fas fa-chevron-circle-right" aria-hidden="true"></i> Contact</a>
-      </div>
-      <div class="box">
-        <h3>Contact info</h3>
-        <p><i class="fas fa-envelope" aria-hidden="true"></i> sharkmessi1020@gmail.com</p>
-        <p><i class="fas fa-map-marked-alt" aria-hidden="true"></i> South Carolina</p>
-        <p><i class="fab fa-github" aria-hidden="true"></i> <a href="https://github.com/dtxdex1020" target="_blank" rel="noopener">dtxdex1020</a></p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="credit">Created by <a href="https://github.com/dtxdex1020" target="_blank" rel="noopener">Dexter</a></p>
-    </div>
-  </section>
+    <section class="connect" id="connect">
+      <header class="sec">
+        <p class="sec-label">Connect</p>
+        <h2>Reach me here.</h2>
+      </header>
+      <ul class="links">
+        <li>
+          <a href="https://github.com/dtxdex1020" target="_blank" rel="noopener">
+            <span class="kind">GitHub</span>
+            <span class="val">github.com/dtxdex1020</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:sharkmessi1020@gmail.com">
+            <span class="kind">Email</span>
+            <span class="val">sharkmessi1020@gmail.com</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
 
-  <a href="#home" id="scroll-top" aria-label="Back to top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+  <footer class="foot">
+    <p><span class="foot-brand">Dexter</span> · South Carolina</p>
+    <a href="#top">Back up</a>
+  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="js/particles-lite.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
