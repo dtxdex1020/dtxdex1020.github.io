@@ -1,67 +1,145 @@
-// Entry point. Every module is plain ES, served as-is: no bundler, no build step.
-import { highlightAll } from './highlight.js';
-import { initEditor } from './editor.js';
-import { initTerminal } from './terminal.js';
-import { initPalette } from './palette.js';
-import { initSource } from './source.js';
-import { initClock } from './clock.js';
-import { initField, initGlow, initReveal } from './fx.js';
-import { initLeadDemo, initStream, initZeltra, initStackNotes, initCopy } from './demos.js';
+(function () {
+  "use strict";
 
-const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const opts = { reducedMotion };
+  var roles = [
+    "Python Developer",
+    "JavaScript Developer",
+    "Web Developer",
+    "Front-End Developer",
+  ];
 
-const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
-if (!isMac) document.querySelectorAll('kbd.mod').forEach((k) => { k.textContent = 'Ctrl'; });
+  if (window.Typed) {
+    new Typed(".typing-text", {
+      strings: roles,
+      loop: true,
+      typeSpeed: 60,
+      backSpeed: 30,
+      backDelay: 750,
+      showCursor: false,
+    });
+  } else {
+    var el = document.querySelector(".typing-text");
+    if (el) el.textContent = roles[0];
+  }
 
-const toastEl = document.getElementById('toast');
-let toastTimer;
-const toast = (text) => {
-  toastEl.textContent = text;
-  toastEl.classList.add('on');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toastEl.classList.remove('on'), 1800);
-};
+  var menuBtn = document.getElementById("menu");
+  var nav = document.getElementById("site-nav");
+  var header = document.querySelector("header");
 
-const go = (id) => document.getElementById(id)?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+  function closeMenu() {
+    if (!nav || !menuBtn) return;
+    nav.classList.remove("nav-toggle");
+    menuBtn.setAttribute("aria-expanded", "false");
+    header && header.classList.remove("menu-open");
+  }
 
-highlightAll();
-initStackNotes();
-initClock();
-initField(opts);
-initGlow(opts);
-initReveal();
-initEditor(opts);
-initLeadDemo(opts);
-initStream(opts);
-initZeltra(opts);
-initCopy(toast);
-const source = initSource();
-const terminal = initTerminal({ onNavigate: go });
+  if (menuBtn && nav) {
+    menuBtn.addEventListener("click", function () {
+      var open = nav.classList.toggle("nav-toggle");
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      header && header.classList.toggle("menu-open", open);
+    });
 
-const palette = initPalette([
-  { group: 'go', label: 'Top', hint: '↑', run: () => go('top') },
-  { group: 'go', label: 'Terminal', hint: '~/terminal', keywords: 'shell cli', run: () => { go('terminal'); setTimeout(() => terminal?.focus(), reducedMotion ? 0 : 600); } },
-  { group: 'go', label: 'Work', hint: '~/work', keywords: 'projects', run: () => go('work') },
-  { group: 'go', label: 'Open source', hint: '~/open-source', keywords: 'oss github repos', run: () => go('oss') },
-  { group: 'go', label: 'Stack', hint: '~/stack', keywords: 'skills', run: () => go('stack') },
-  { group: 'go', label: 'Contact', hint: '~/contact', keywords: 'email', run: () => go('contact') },
-  { group: 'go', label: 'Changelog', hint: '~/changelog.md', keywords: 'log history', run: () => go('changelog') },
-  { group: 'do', label: 'Copy email', hint: 'support.minthost@gmail.com', run: async () => { try { await navigator.clipboard.writeText('support.minthost@gmail.com'); toast('copied support.minthost@gmail.com'); } catch { toast('support.minthost@gmail.com'); } } },
-  { group: 'do', label: 'Toggle view source', hint: '</>', keywords: 'code', run: () => source.toggle() },
-  { group: 'do', label: 'Run neofetch', hint: 'terminal', run: () => { go('terminal'); terminal?.exec('neofetch'); } },
-  { group: 'open', label: 'minthost.org', hint: '↗', run: () => window.open('https://minthost.org', '_blank', 'noopener') },
-  { group: 'open', label: 'mintbreeze.org', hint: '↗', run: () => window.open('https://mintbreeze.org', '_blank', 'noopener') },
-  { group: 'open', label: 'GitHub', hint: '↗', keywords: 'dtxdex1020', run: () => window.open('https://github.com/dtxdex1020', '_blank', 'noopener') },
-]);
-document.getElementById('paletteOpen').addEventListener('click', palette.open);
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+  }
 
-const nav = document.getElementById('nav');
-const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
-addEventListener('scroll', onScroll, { passive: true });
-onScroll();
+  var sections = document.querySelectorAll("section[id]");
+  var navLinks = document.querySelectorAll(".navbar a");
+  var scrollTop = document.getElementById("scroll-top");
 
-document.getElementById('year').textContent = new Date().getFullYear();
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    var marker = y + 120;
 
-console.log('%c hey, you opened the console. ', 'background:#4aa3df;color:#fff;border-radius:4px;padding:2px 4px',
-  '\nthe whole site is hand-written vanilla JS. press the </> button for the source.');
+    sections.forEach(function (section) {
+      var top = section.offsetTop;
+      var height = section.offsetHeight;
+      var id = section.getAttribute("id");
+      if (marker >= top && marker < top + height) {
+        navLinks.forEach(function (link) {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === "#" + id
+          );
+        });
+      }
+    });
+
+    if (scrollTop) {
+      scrollTop.classList.toggle("show", y > 400);
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  var form = document.getElementById("contact-form");
+  var status = document.getElementById("form-status");
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var name = (form.querySelector("#name") || {}).value || "";
+      var email = (form.querySelector("#user_email") || {}).value || "";
+      var title = (form.querySelector("#title") || {}).value || "";
+      var message = (form.querySelector("#message") || {}).value || "";
+      var body =
+        "Name: " +
+        name +
+        "\nEmail: " +
+        email +
+        "\n\n" +
+        message;
+      var mailto =
+        "mailto:sharkmessi1020@gmail.com" +
+        "?subject=" +
+        encodeURIComponent(title) +
+        "&body=" +
+        encodeURIComponent(body);
+      window.location.href = mailto;
+      if (status) {
+        status.textContent = "Opening your email client…";
+      }
+    });
+  }
+
+  if (window.ParticlesLite) {
+    ParticlesLite.init("particles-js", {
+      color: "#000000",
+      count: 48,
+      maxSize: 2.4,
+      speed: 0.35,
+      linkDistance: 120,
+      linkOpacity: 0.12,
+    });
+  }
+
+  var revealTargets = document.querySelectorAll(
+    ".about .row, .skills .bar, .experience .box, .contact form, .footer .box"
+  );
+  revealTargets.forEach(function (node) {
+    node.classList.add("reveal");
+  });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    revealTargets.forEach(function (node) {
+      io.observe(node);
+    });
+  } else {
+    revealTargets.forEach(function (node) {
+      node.classList.add("in");
+    });
+  }
+})();
