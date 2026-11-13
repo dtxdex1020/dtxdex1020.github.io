@@ -1,62 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  /* CorePilot brand — Linear-inspired density, CorePilot navy/blue */
-  --navy-950: #060b14;
-  --navy-900: #0b1220;
-  --navy-850: #0f1829;
-  --navy-800: #151f30;
-  --navy-700: #1c2940;
-  --blue-400: #5b9fd4;
-  --blue-500: #3d87c5;
-  --blue-600: #2f6fa8;
-  --white: #ffffff;
-  --slate-100: #e8eef6;
-  --slate-300: #b7c4d6;
-  --slate-400: #8b9bb0;
-
-  --background: var(--navy-900);
-  --foreground: var(--white);
-  --accent: var(--blue-400);
-  --accent-strong: var(--blue-500);
-  --muted: var(--slate-400);
-  --surface: var(--navy-800);
-  --border: rgba(148, 173, 204, 0.12);
-  --border-strong: rgba(148, 173, 204, 0.2);
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #8a8a8a;
+  --muted-dim: #6b6b6b;
+  --accent: #5b9fd4;
+  --font-sans: var(--font-plus-jakarta);
+  --font-display: var(--font-sora);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-strong: var(--accent-strong);
   --color-muted: var(--muted);
-  --color-surface: var(--surface);
-  --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
-  --color-navy-950: var(--navy-950);
-  --color-navy-900: var(--navy-900);
-  --color-navy-850: var(--navy-850);
-  --color-navy-800: var(--navy-800);
-  --color-navy-700: var(--navy-700);
-  --color-slate-100: var(--slate-100);
-  --color-slate-300: var(--slate-300);
+  --color-accent: var(--accent);
   --font-sans: var(--font-plus-jakarta);
   --font-display: var(--font-sora);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #000000;
+  color: #ffffff;
   font-family: var(--font-plus-jakarta), "Segoe UI", sans-serif;
-  font-feature-settings: "ss01" on, "cv11" on;
   letter-spacing: -0.011em;
-}
-
-.app-shell {
-  background:
-    radial-gradient(ellipse 70% 45% at 70% 0%, rgba(61, 135, 197, 0.14), transparent 55%),
-    linear-gradient(180deg, var(--navy-950) 0%, var(--navy-900) 40%, var(--navy-850) 100%);
 }
 
 @keyframes fade-up {
@@ -70,16 +37,6 @@ body {
   }
 }
 
-@keyframes soft-pulse {
-  0%,
-  100% {
-    opacity: 0.45;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
 .animate-fade-up {
   animation: fade-up 0.55s ease-out both;
 }
@@ -89,9 +46,13 @@ body {
 }
 
 .animate-fade-up-delay-2 {
-  animation: fade-up 0.55s ease-out 0.16s both;
+  animation: fade-up 0.55s ease-out 0.14s both;
 }
 
-.animate-soft-pulse {
-  animation: soft-pulse 2.8s ease-in-out infinite;
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.55s ease-out 0.2s both;
+}
+
+.preview-fade {
+  mask-image: linear-gradient(180deg, #000 62%, transparent 100%);
 }

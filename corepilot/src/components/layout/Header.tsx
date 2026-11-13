@@ -1,43 +1,45 @@
 import { Logo } from "./Logo";
 
 /**
- * Dense top bar — Linear-like chrome, CorePilot branding.
+ * Marketing nav — Linear homepage language:
+ * logo left, muted text links, white pill CTA (black text).
  */
 export function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-border bg-navy-950/70 backdrop-blur-md">
-      <div className="flex h-12 items-center justify-between gap-4 px-4 sm:px-5">
-        <div className="flex items-center gap-3 md:gap-4">
-          <Logo compact className="md:hidden" />
-          <div className="hidden items-center gap-1 sm:flex" aria-label="Primary">
-            <a
-              href="#overview"
-              className="rounded-md px-2.5 py-1.5 text-[13px] font-medium text-slate-300 transition-colors hover:bg-navy-800 hover:text-white"
-            >
-              Overview
-            </a>
-            <a
-              href="#get-started"
-              className="rounded-md px-2.5 py-1.5 text-[13px] font-medium text-slate-300 transition-colors hover:bg-navy-800 hover:text-white"
-            >
-              Foundation
-            </a>
-          </div>
-        </div>
+    <header className="relative z-20">
+      <div className="mx-auto flex h-[56px] w-full max-w-[1120px] items-center justify-between px-5 sm:px-6 lg:px-8">
+        <Logo />
 
-        <div className="flex items-center gap-2">
-          <span className="hidden items-center gap-1.5 rounded-md border border-border bg-navy-850 px-2 py-1 text-[12px] text-muted sm:inline-flex">
-            <kbd className="font-mono text-[11px] text-slate-300">⌘</kbd>
-            <span>K</span>
-            <span className="text-muted/70">Search</span>
-          </span>
+        <nav className="flex items-center gap-5" aria-label="Primary">
+          <a
+            href="#overview"
+            className="hidden text-[13px] text-[#8a8a8a] transition-colors hover:text-white sm:inline"
+          >
+            Product
+          </a>
           <a
             href="#get-started"
-            className="inline-flex h-7 items-center rounded-md bg-accent-strong px-2.5 text-[13px] font-medium text-white transition-colors hover:bg-accent"
+            className="text-[13px] text-[#8a8a8a] transition-colors hover:text-white"
           >
-            Get started
+            Log in
           </a>
-        </div>
+          <a
+            href="#get-started"
+            className="inline-flex h-[28px] items-center rounded-full bg-white px-3 text-[13px] font-medium text-black transition-opacity hover:opacity-90"
+          >
+            Sign up
+          </a>
+          <button
+            type="button"
+            className="ml-1 flex h-8 w-8 items-center justify-center text-white sm:hidden"
+            aria-label="Open menu"
+          >
+            <span className="flex flex-col gap-[5px]" aria-hidden="true">
+              <span className="block h-px w-4 bg-white" />
+              <span className="block h-px w-4 bg-white" />
+            </span>
+          </button>
+        </nav>
       </div>
     </header>
   );
