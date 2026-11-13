@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  /* CorePilot brand tokens */
-  --navy-950: #050d1a;
-  --navy-900: #0a1628;
-  --navy-800: #122033;
-  --navy-700: #1a2d45;
+  /* CorePilot brand — Linear-inspired density, CorePilot navy/blue */
+  --navy-950: #060b14;
+  --navy-900: #0b1220;
+  --navy-850: #0f1829;
+  --navy-800: #151f30;
+  --navy-700: #1c2940;
   --blue-400: #5b9fd4;
   --blue-500: #3d87c5;
   --blue-600: #2f6fa8;
   --white: #ffffff;
-  --slate-200: #d6dee8;
-  --slate-400: #8fa0b5;
+  --slate-100: #e8eef6;
+  --slate-300: #b7c4d6;
+  --slate-400: #8b9bb0;
 
   --background: var(--navy-900);
   --foreground: var(--white);
@@ -19,7 +21,8 @@
   --accent-strong: var(--blue-500);
   --muted: var(--slate-400);
   --surface: var(--navy-800);
-  --border: rgba(91, 159, 212, 0.22);
+  --border: rgba(148, 173, 204, 0.12);
+  --border-strong: rgba(148, 173, 204, 0.2);
 }
 
 @theme inline {
@@ -30,10 +33,14 @@
   --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-navy-950: var(--navy-950);
   --color-navy-900: var(--navy-900);
+  --color-navy-850: var(--navy-850);
   --color-navy-800: var(--navy-800);
   --color-navy-700: var(--navy-700);
+  --color-slate-100: var(--slate-100);
+  --color-slate-300: var(--slate-300);
   --font-sans: var(--font-plus-jakarta);
   --font-display: var(--font-sora);
 }
@@ -42,29 +49,20 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-plus-jakarta), "Segoe UI", sans-serif;
+  font-feature-settings: "ss01" on, "cv11" on;
+  letter-spacing: -0.011em;
 }
 
-/* Soft radial glow behind the hero — atmosphere without clutter */
-.hero-atmosphere {
+.app-shell {
   background:
-    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(61, 135, 197, 0.28), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 85% 70%, rgba(47, 111, 168, 0.12), transparent 50%),
-    linear-gradient(180deg, var(--navy-950) 0%, var(--navy-900) 45%, var(--navy-800) 100%);
-}
-
-/* Subtle grid for depth */
-.hero-grid {
-  background-image:
-    linear-gradient(rgba(91, 159, 212, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 159, 212, 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 20%, transparent 75%);
+    radial-gradient(ellipse 70% 45% at 70% 0%, rgba(61, 135, 197, 0.14), transparent 55%),
+    linear-gradient(180deg, var(--navy-950) 0%, var(--navy-900) 40%, var(--navy-850) 100%);
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -75,7 +73,7 @@ body {
 @keyframes soft-pulse {
   0%,
   100% {
-    opacity: 0.55;
+    opacity: 0.45;
   }
   50% {
     opacity: 1;
@@ -83,17 +81,17 @@ body {
 }
 
 .animate-fade-up {
-  animation: fade-up 0.7s ease-out both;
+  animation: fade-up 0.55s ease-out both;
 }
 
 .animate-fade-up-delay-1 {
-  animation: fade-up 0.7s ease-out 0.12s both;
+  animation: fade-up 0.55s ease-out 0.08s both;
 }
 
 .animate-fade-up-delay-2 {
-  animation: fade-up 0.7s ease-out 0.24s both;
+  animation: fade-up 0.55s ease-out 0.16s both;
 }
 
 .animate-soft-pulse {
-  animation: soft-pulse 3.2s ease-in-out infinite;
+  animation: soft-pulse 2.8s ease-in-out infinite;
 }
